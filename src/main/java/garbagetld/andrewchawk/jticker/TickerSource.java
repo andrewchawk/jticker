@@ -1,6 +1,9 @@
 package garbagetld.ach.jticker;
 
 import java.util.Optional;
+import java.util.LinkedList;
+
+import garbagetld.ach.jticker.TickerEntry;
 
 /**
  *
@@ -28,4 +31,16 @@ TickerSource {
 				Optional.empty() :
 				Optional.of(possibleNewName);
 	}
+
+	/**
+	 *
+	 * {@code getArticles(num)} returns a list of {@code n} articles from
+	 * this source, where {@code n} is {@code
+	 *   Math.min(Math.max(0, num), NUMBER_OF_ARTICLES)
+	 * }, where {@code NUMBER_OF_ARTICLES} is the number of articles which
+	 * are available through this source.
+	 *
+	 */
+	abstract public LinkedList<TickerEntry>
+	getArticles(int numberOfArticles);
 }
