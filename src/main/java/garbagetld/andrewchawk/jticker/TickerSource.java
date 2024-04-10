@@ -40,6 +40,11 @@ TickerSource {
 	 * }, where {@code NUMBER_OF_ARTICLES} is the number of articles which
 	 * are available through this source.
 	 *
+	 * @param numberOfArticles the number of articles which should be
+	 * returned
+	 *
+	 * @return a list of articles
+	 *
 	 */
 	abstract public LinkedList<TickerEntry>
 	getArticles(int numberOfArticles);
