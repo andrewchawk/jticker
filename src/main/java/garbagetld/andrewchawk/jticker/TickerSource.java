@@ -19,6 +19,16 @@ TickerSource {
 	 *
 	 */
 	public Optional<String> name;
+	/**
+	 *
+	 * If this value is negative, then infinitely many news entries from
+	 * this source can accumulate in the list of news entries.  If this
+	 * value is nonnegative, then at any point in time, no more than
+	 * {@code maxEntries} news entries from this source are in the list of
+	 * news entries.
+	 *
+	 */
+	public int maxEntries;
 
 	/**
 	 *
