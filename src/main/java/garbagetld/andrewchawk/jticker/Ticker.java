@@ -51,4 +51,59 @@ Ticker {
 	 */
 	Optional<String> currentLine;
 
+	/**
+	 *
+	 * Ignoring the order of the list, articles from the specified source
+	 * are deleted in accordance with the {@code options} until at most
+	 * {@code source.maxEntries} articles from the specified source remain.
+	 *
+	 * @param source the source whose articles should possibly be deleted
+	 *
+	 */
+	public void
+	removeExcessEntriesFromSource(TickerSource source) {
+		if (source.maxEntries < 0)
+			// If having infinitely many entries is acceptable, then
+			// "excess entries" is a meaningless statement!
+			return;
+
+		// Declaring variables here prevents excessive memory
+		// allocation but is a bit ugly.
+		LinkedList<TickerEntry> entriesFromSource = new LinkedList<>();
+		LinkedList<Integer> deletionIndices = new LinkedList<>();
+
+		// We actually define entriesFromSource.
+		for (int i = 0; i < articles.size(); i++) {
+			if (source.equals(articles.get(i).source)) {
+				entriesFromSource.add(articles.get(i));
+				deletionIndices.add(i);
+			}
+		}
+
+		if (entriesFromSource.size() > source.maxEntries) {
+			for (int i = 0; i < deletionIndices.size(); i++)
+				// Adding i, which is the total number of
+				// elements which have *already* been removed,
+				// ensures that the indexing is correct.  A
+				// trivial example of bad indexing is as
+				// follows:
+				//
+				//   {1, 2, 3, 4, 5} is the array from which
+				//   values should be removed.
+				//   The array of the indices of the values
+				//   which should be removed is {1, 3}.
+				//   We begin by removing the element at 1.  The
+				//   result is {1, 3, 4, 5}.
+				//   We then remove the elemnent at 3.  The
+				//   result is {1, 3, 4}.  This result is bad.
+				articles.remove(i + deletionIndices.get(i));
+
+			articles = options.recombineEntries.apply(
+				articles,
+				options.trimSingleSource.apply(
+					entriesFromSource
+				)
+			);
+		}
+	}
 }
