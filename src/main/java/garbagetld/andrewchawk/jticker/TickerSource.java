@@ -18,7 +18,7 @@ TickerSource {
 	 * This value refers to the name of the source.
 	 *
 	 */
-	Optional<String> name;
+	public Optional<String> name;
 
 	/**
 	 *
