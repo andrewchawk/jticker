@@ -1,5 +1,6 @@
 package garbagetld.ach.jticker;
 
+import java.util.function.Function;
 import java.util.function.UnaryOperator;
 import java.util.function.BinaryOperator;
 import java.util.LinkedList;
@@ -49,4 +50,14 @@ public class TickerOptions {
 	 *
 	 */
 	public UnaryOperator<LinkedList<TickerEntry>> trimSingleSource;
+
+	/**
+	 *
+	 * This function is the default parser for RSS feeds.  The input is an
+	 * RSS feed, and the output is a list of the entries in the RSS feed.
+	 * If no entries are recognized, then the output should be an empty
+	 * list.
+	 *
+	 */
+	public Function<String, LinkedList<TickerEntry>> defaultParseRss;
 }

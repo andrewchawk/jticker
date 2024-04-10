@@ -1,5 +1,6 @@
 package garbagetld.ach.jticker;
 
+import java.util.function.Function;
 import java.util.LinkedList;
 import java.net.URL;
 
@@ -23,6 +24,27 @@ extends TickerSource {
 
 	/**
 	 *
+	 * This function is used to process the RSS feed.  The input is an RSS
+	 * feed, and the output is the list of all entries in the RSS feed.
+	 *
+	 */
+	Function<String, LinkedList<TickerEntry>> parseRssFeed;
+
+	/**
+	 *
+	 * This function returns the RSS feed to which the ticker source points.
+	 * No parsing is done.  The output is just XML or, in the event of a bad
+	 * configuration, possibly something else.
+	 *
+	 */
+	public String
+	getRawRssFeed() {
+		throw new UnsupportedOperationException
+			("Fetching RSS feeds is unsupported.");
+	}
+
+	/**
+	 *
 	 * {@code getArticles(n)} returns {@code n} articles from this RSS feed.
 	 *
 	 * @param i the number of articles which should be returned
@@ -32,8 +54,7 @@ extends TickerSource {
 	 */
 	public LinkedList<TickerEntry>
 	getArticles(int i) {
-		throw new UnsupportedOperationException
-			("Fetching RSS feeds is unsupported.");
+		return parseRssFeed.apply(getRawRssFeed());
 	}
 
 	/**
