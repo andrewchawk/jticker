@@ -1,6 +1,7 @@
 package garbagetld.ach.jticker;
 
 import java.util.LinkedList;
+import java.util.Optional;
 
 import garbagetld.ach.jticker.TickerOptions;
 import garbagetld.ach.jticker.TickerSource;
@@ -40,4 +41,14 @@ Ticker {
 	 *
 	 */
 	LinkedList<TickerEntry> articles;
+	/**
+	 *
+	 * At a given point in time, this value is empty or refers to whatever
+	 * line is being displayed on the ticker.
+	 *
+	 * Causes for emptiness include a lack of news.
+	 *
+	 */
+	Optional<String> currentLine;
+
 }
