@@ -4,6 +4,8 @@ import java.util.Optional;
 import java.net.URL;
 import java.util.Date;
 
+import garbagetld.ach.jticker.TickerSource;
+
 /**
  *
  * {@code TickerEntry} objects describe the news entries or similar things which
@@ -49,4 +51,10 @@ TickerEntry {
 	 *
 	 */
 	Optional<Date> dateOfPublishing;
+	/**
+	 *
+	 * This value was the source of this article.
+	 *
+	 */
+	TickerSource source;
 }
