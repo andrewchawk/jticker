@@ -13,6 +13,11 @@ import garbagetld.ach.jticker.TickerEntry;
  */
 public abstract class
 TickerSource {
+	/**
+	 *
+	 * This value refers to the name of the source.
+	 *
+	 */
 	Optional<String> name;
 
 	/**
