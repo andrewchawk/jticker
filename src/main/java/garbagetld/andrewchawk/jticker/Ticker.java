@@ -2,6 +2,7 @@ package garbagetld.ach.jticker;
 
 import java.util.LinkedList;
 import java.util.Optional;
+import java.net.URL;
 
 import garbagetld.ach.jticker.TickerOptions;
 import garbagetld.ach.jticker.TickerSource;
@@ -105,5 +106,21 @@ Ticker {
 				)
 			);
 		}
+	}
+
+	/**
+	 *
+	 * Add the specified RSS source to the list of sources.
+	 *
+	 * @param feedUrl the URL of the RSS source
+	 * @param possibleName the empty string or desired name
+	 *
+	 */
+	public void
+	addSourceRss(URL feedUrl, String possibleName) {
+		TickerSourceRss toAdd =
+			new TickerSourceRss(feedUrl, possibleName);
+		toAdd.parseRssFeed = options.defaultParseRss;
+		sources.add(toAdd);
 	}
 }
