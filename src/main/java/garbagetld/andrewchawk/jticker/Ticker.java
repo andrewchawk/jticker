@@ -72,7 +72,7 @@ Ticker {
 		LinkedList<TickerEntry> entriesFromSource = new LinkedList<>();
 		LinkedList<Integer> deletionIndices = new LinkedList<>();
 
-		// We actually define entriesFromSource.
+		// We actually define entriesFromSource and deletionIndices.
 		for (int i = 0; i < articles.size(); i++) {
 			if (source.equals(articles.get(i).source)) {
 				entriesFromSource.add(articles.get(i));
