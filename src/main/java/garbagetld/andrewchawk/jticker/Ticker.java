@@ -95,7 +95,7 @@ Ticker {
 				//   which should be removed is {1, 3}.
 				//   We begin by removing the element at 1.  The
 				//   result is {1, 3, 4, 5}.
-				//   We then remove the elemnent at 3.  The
+				//   We then remove the element at 3.  The
 				//   result is {1, 3, 4}.  This result is bad.
 				articles.remove(i + deletionIndices.get(i));
 
