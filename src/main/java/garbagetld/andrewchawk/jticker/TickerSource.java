@@ -1,5 +1,6 @@
 package garbagetld.ach.jticker;
 
+import java.io.IOException;
 import java.util.Optional;
 import java.util.LinkedList;
 
@@ -62,5 +63,6 @@ TickerSource {
 	 *
 	 */
 	abstract public LinkedList<TickerEntry>
-	getArticles(int numberOfArticles);
+	getArticles(int numberOfArticles)
+	throws IOException;
 }

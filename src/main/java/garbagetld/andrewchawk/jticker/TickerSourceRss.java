@@ -1,5 +1,6 @@
 package garbagetld.ach.jticker;
 
+import java.io.IOException;
 import java.util.function.Function;
 import java.util.LinkedList;
 import java.net.URL;
@@ -38,7 +39,8 @@ extends TickerSource {
 	 *
 	 */
 	public String
-	getRawRssFeed() {
+	getRawRssFeed()
+	throws IOException {
 		throw new UnsupportedOperationException
 			("Fetching RSS feeds is unsupported.");
 	}
@@ -53,7 +55,8 @@ extends TickerSource {
 	 *
 	 */
 	public LinkedList<TickerEntry>
-	getArticles(int i) {
+	getArticles(int i)
+	throws IOException {
 		return parseRssFeed.apply(getRawRssFeed());
 	}
 
