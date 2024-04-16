@@ -2,6 +2,7 @@ package garbagetld.ach.jticker;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.LinkedList;
 import java.net.URL;
@@ -34,6 +35,15 @@ extends TickerSource {
 
 	/**
 	 *
+	 * This value, if present, will be used as the encoding scheme for the
+	 * raw RSS feed.  If this value is absent, then {@code getRawRssFeed()}
+	 * will use {@code "UTF-8"}.
+	 *
+	 */
+	Optional<String> scannerEncodingScheme;
+
+	/**
+	 *
 	 * This function returns the RSS feed to which the ticker source points.
 	 * No parsing is done.  The output is just XML or, in the event of a bad
 	 * configuration, possibly something else.
@@ -45,7 +55,7 @@ extends TickerSource {
 		String out = "";
 		Scanner rssScanner = new Scanner(
 			feedLocation.openStream(),
-			"UTF-8"
+			scannerEncodingScheme.orElse("UTF-8")
 		);
 
 		out = rssScanner.useDelimiter("\\a").next();
@@ -84,6 +94,7 @@ extends TickerSource {
 	public
 	TickerSourceRss(URL newUrl, String newName) {
 		this.feedLocation = newUrl;
+		this.scannerEncodingScheme = Optional.empty();
 		this.setName(newName);
 	}
 }
