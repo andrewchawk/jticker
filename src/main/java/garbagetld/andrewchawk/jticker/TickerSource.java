@@ -37,6 +37,12 @@ TickerSource {
 	 * If the input is the null string, then the current name is deleted.
 	 * Otherwise, the input is the new name of the news source.
 	 *
+	 * This function does not account for <i>all</i> terrible names; names
+	 * which consist solely of whitespace characters <i>are</i> permitted.
+	 * This functionality <i>may</i> eventually be changed, but such change
+	 * will probably just encourage the creation of a significantly more
+	 * robust -- and complex -- detector of terrible names.
+	 *
 	 * @param possibleNewName the empty string or the desired name
 	 *
 	 */
