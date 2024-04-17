@@ -93,18 +93,22 @@ extends TickerSource {
 	/**
 	 *
 	 * This constructor creates a new {@code TickerSourceWeb} object which
-	 * points to the specified URL and also has the specified name.  The
-	 * naming system inherits all of the lovely quirks of
-	 * {@link TickerSource#setName(String)}.
+	 * points to the specified URL, has the specified name, and uses the
+	 * specified parsing function.  The naming system inherits all of the
+	 * lovely quirks of {@link TickerSource#setName(String)}.
 	 *
 	 * @param newUrl the URL of the Web-based source of news
 	 * @param newName the empty string or the name of the
+	 * @param parseFun the parsing function
 	 *
 	 */
 	public
-	TickerSourceWeb(URL newUrl, String newName) {
+	TickerSourceWeb(URL newUrl,
+	                String newName,
+	                Function<String, LinkedList<TickerEntry>> parseFun) {
 		this.feedLocation = newUrl;
 		this.scannerEncodingScheme = Optional.empty();
+		this.parseWebFeed = parseFun;
 		this.setName(newName);
 	}
 }

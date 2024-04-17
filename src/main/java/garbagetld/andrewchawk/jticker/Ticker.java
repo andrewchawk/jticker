@@ -119,8 +119,11 @@ Ticker {
 	public void
 	addSourceRss(URL feedUrl, String possibleName) {
 		TickerSourceWeb toAdd =
-			new TickerSourceWeb(feedUrl, possibleName);
-		toAdd.parseWebFeed = options.defaultParseRss;
+			new TickerSourceWeb(
+				feedUrl,
+				possibleName,
+				options.defaultParseRss
+		);
 		sources.add(toAdd);
 	}
 }
