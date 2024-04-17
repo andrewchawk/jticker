@@ -122,8 +122,46 @@ Ticker {
 			new TickerSourceWeb(
 				feedUrl,
 				possibleName,
+				options.defaultMaxEntries,
 				options.defaultParseRss
 		);
 		sources.add(toAdd);
+	}
+
+	/**
+	 *
+	 * This function returns a new {@code Ticker} object which has the
+	 * specified options but is otherwise empty.  Realistically, this
+	 * constructor is probably the best choice.
+	 *
+	 * @param opt the options of the new object
+	 *
+	 */
+	public
+	Ticker(TickerOptions opt) {
+		this.options = opt;
+		this.sources = new LinkedList<>();
+		this.articles = new LinkedList<>();
+		this.currentLine = Optional.empty();
+	}
+
+	/**
+	 *
+	 * In accordance with the parameters, this function returns a new {@code
+	 * Ticker} object whose {@code currentLine} is {@code Optional.empty()}.
+	 *
+	 * @param newOptions the {@code options} of the new object
+	 * @param newSources the {@code sources} of the new object
+	 * @param newArticles the {@code articles} of the new object
+	 *
+	 */
+	public
+	Ticker(TickerOptions newOptions,
+	       LinkedList<TickerSource> newSources,
+	       LinkedList<TickerEntry> newArticles) {
+		this.options = newOptions;
+		this.sources = newSources;
+		this.articles = newArticles;
+		this.currentLine = Optional.empty();
 	}
 }

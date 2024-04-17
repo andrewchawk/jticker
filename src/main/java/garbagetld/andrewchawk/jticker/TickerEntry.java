@@ -44,7 +44,7 @@ TickerEntry {
 	 * the article.  This value could even be a nice summary of the article.
 	 *
 	 */
-	Optional<URL> longDescription;
+	Optional<String> longDescription;
 	/**
 	 *
 	 * This value, if present, is the date of the publishing of the article.
@@ -57,4 +57,35 @@ TickerEntry {
 	 *
 	 */
 	TickerSource source;
+
+	/**
+	 *
+	 * This constructor generates a {@code TickerSource} in accordance with
+	 * the specified information.
+	 *
+	 * Within this documentation, "the article" is an abbreviated form of
+	 * "the item which is described by the result of the application of this
+	 * constructor".
+	 *
+	 * @param s the source of the article
+	 * @param sd a headline or short description of the article
+	 * @param feu optionally, the URL of the full version of the article,
+	 * as opposed to a headline
+	 * @param ld optionally, the full article or a long description or
+	 * summary of the article
+	 * @param dop optionally, the date of the publishing of the article
+	 *
+	 */
+	public
+	TickerEntry(TickerSource s,
+	            String sd,
+	            Optional<String> ld,
+	            Optional<URL> feu,
+	            Optional<Date> dop) {
+		shortDescription = sd;
+		fullEntryUrl = feu;
+		longDescription = ld;
+		dateOfPublishing = dop;
+		source = s;
+	}
 }

@@ -99,16 +99,21 @@ extends TickerSource {
 	 *
 	 * @param newUrl the URL of the Web-based source of news
 	 * @param newName the empty string or the name of the
+	 * @param maxEntries the maximum number of tracked articles from this
+	 * source
 	 * @param parseFun the parsing function
 	 *
 	 */
 	public
 	TickerSourceWeb(URL newUrl,
 	                String newName,
+			int maxEntries,
 	                Function<String, LinkedList<TickerEntry>> parseFun) {
+		super(maxEntries, Optional.empty());
+		this.setName(newName);
+
 		this.feedLocation = newUrl;
 		this.scannerEncodingScheme = Optional.empty();
 		this.parseWebFeed = parseFun;
-		this.setName(newName);
 	}
 }

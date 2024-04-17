@@ -71,4 +71,21 @@ TickerSource {
 	abstract public LinkedList<TickerEntry>
 	getArticles(int numberOfArticles)
 	throws IOException;
+
+	/**
+	 *
+	 * In accordance with the specified parameters, this constructor returns
+	 * a new source object.
+	 *
+	 * @param newMaxEntries a negative number or the maximum number of
+	 * entries from this article which should be tracked
+	 * @param newName optionally, the {@code name} of the new source object
+	 *
+	 */
+	public
+	TickerSource(int newMaxEntries,
+	             Optional<String> newName) {
+		maxEntries = newMaxEntries;
+		name = newName;
+	}
 }

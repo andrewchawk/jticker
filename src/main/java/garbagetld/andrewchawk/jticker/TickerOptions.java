@@ -60,4 +60,24 @@ public class TickerOptions {
 	 *
 	 */
 	public Function<String, LinkedList<TickerEntry>> defaultParseRss;
+
+	/**
+	 *
+	 * The type of this function might be kind of gross, but this function
+	 * can prevent some null-related nastiness by demanding that all fields
+	 * are actually specified.
+	 *
+	 * The meanings of the parameters should be pretty obvious.
+	 *
+	 */
+	public
+	TickerOptions(int newDefaultMaxEntries,
+	              BinaryOperator<LinkedList<TickerEntry>> newRecombineEntries,
+	              UnaryOperator<LinkedList<TickerEntry>> newTrimSingleSource,
+	              Function<String, LinkedList<TickerEntry>> newDefaultParseRss) {
+		defaultMaxEntries = newDefaultMaxEntries;
+		recombineEntries = newRecombineEntries;
+		trimSingleSource = newTrimSingleSource;
+		defaultParseRss = newDefaultParseRss;
+	}
 }
