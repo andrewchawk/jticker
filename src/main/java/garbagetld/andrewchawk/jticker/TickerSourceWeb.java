@@ -57,6 +57,9 @@ extends TickerSource {
 	 * output should be XML.  Determining other behavior is left as an
 	 * exercise for the reader.
 	 *
+	 * @return the raw content of the Web feed
+	 * @throws IOException network errors
+	 *
 	 */
 	public String
 	getRawWebFeed()

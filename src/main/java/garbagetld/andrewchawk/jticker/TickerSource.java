@@ -66,6 +66,7 @@ TickerSource {
 	 * returned
 	 *
 	 * @return a list of articles
+	 * @throws IOException network errors and the like
 	 *
 	 */
 	abstract public LinkedList<TickerEntry>
